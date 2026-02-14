@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Conferences{% endblock %}
+
+{% block content %}
+<h1>Scientific Conferences</h1>
+<div class="row">
+    {% for conference in conferences %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ conference.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ conference.start_date }} - {{ conference.end_date }}</h6>
+                <p class="card-text">{{ conference.description|truncatechars:100 }}</p>
+                <p><strong>Location:</strong> {{ conference.location }}</p>
+                <a href="{{ conference.website }}" class="btn btn-primary btn-sm" target="_blank">Visit Website</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No conferences yet. <a href="/admin/events/conference/add/">Add one</a>.</p>
+    {% endfor %}
+</div>
+{% endblock %}

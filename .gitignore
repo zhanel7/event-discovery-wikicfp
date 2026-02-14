@@ -1,0 +1,25 @@
+@"
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.sqlite3
+.env
+
+# IDE
+.idea/
+.vscode/
+
+# Docker
+*.pid
+
+# Media
+media/
+static/
+
+# System
+Desktop.ini
+Thumbs.db
+"@ | Out-File -Encoding utf8 .gitignore
