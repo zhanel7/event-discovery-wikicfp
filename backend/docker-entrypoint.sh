@@ -1,4 +1,4 @@
-python manage.py migrate
+﻿python manage.py migrate
 python manage.py collectstatic --noinput
 
 echo "=== DIAGNOSTICS START ==="
