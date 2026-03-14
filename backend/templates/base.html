@@ -14,13 +14,36 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Conferences</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/api/docs/">API Docs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/">Admin</a>
                     </li>
+                </ul>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="nav-link text-light">Hello, {{ user.username }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+                                {% csrf_token %}
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

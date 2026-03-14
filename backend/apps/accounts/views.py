@@ -37,7 +37,9 @@ class LogoutView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        request.auth.delete()
+        # Токенді өшіру (егер бар болса)
+        if hasattr(request, 'auth') and request.auth is not None:
+            request.auth.delete()
         logout(request)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
